@@ -3,7 +3,7 @@ import User from "../models/user.js";
 import { Request, Response } from "express";
 import { json } from "stream/consumers";
 
-export const getUsers = async (req: Request, res: Response) => {
+const getUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -13,7 +13,7 @@ export const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-export const createUser = async (req: Request, res: Response) => {
+const createUser = async (req: Request, res: Response) => {
   try {
     const { userName, email, password } = req.body;
     const user = await User.create({ userName, password, email });
@@ -24,7 +24,7 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const updateUser = async (req: Request, res: Response) => {
+const updateUser = async (req: Request, res: Response) => {
   try {
     const newData = req.body;
     const user = await User.findByIdAndUpdate(req.params.id, newData, {
@@ -41,7 +41,7 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteUser = async (req: Request, res: Response) => {
+const deleteUser = async (req: Request, res: Response) => {
     
   const {id} = req.params;
   try {
@@ -54,3 +54,10 @@ export const deleteUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
+module.exports={
+  getUsers,
+  createUser,
+  updateUser,
+  deleteUser
+}

@@ -3,7 +3,7 @@ import Login from "../pages/user/Login"
 import Signup from "../pages/user/Signup"
 import Home from "../pages/user//Home"
 import Profile from "../pages/user//Profile"
-import AdminDashbaord from "../pages/admin/adminDashbaord"
+import AdminDashbaord from "../pages/admin/AdminDashbaord"
 
 const Approutes = () => {
   return (
